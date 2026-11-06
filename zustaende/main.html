@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Berichtsheft - Login</title>
+
+  <link rel="stylesheet" href="../vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<body class="container min-vh-100 max-vh-300 d-flex flex-column">
+
+  <div class="HeaderWrapper d-flex flex-column">
+    <div class="LogoWrapper row justify-content-center">
+      <a href="https://www.gso-koeln.de"
+         target="_blank"
+         class="col-10 col-lg-6">
+
+        <img
+          src="../assets/cropped-logo-gso.png"
+          alt="GSO Logo"
+          class="img-fluid"
+        >
+      </a>
+    </div>
+
+    <h1 class="LoginHeadline">Berichtsheft-Tool</h1>
+
+    <div class="TitleWrapper row justify-content-center mt-auto">
+      <h2 class="col-11 col-md-6 col-lg-5">Login</h2>
+    </div>
+  </div>
+
+  <div class="FormWrapper row justify-content-center">
+    <form id="loginForm" class="col-11 col-md-6 col-lg-5">
+
+      <div class="row mb-3">
+        <label
+          for="benutzername"
+          class="col-5 col-form-label"
+        >
+          Benutzername:
+        </label>
+
+        <div class="col-7">
+          <input
+            type="text"
+            id="benutzername"
+            name="benutzername"
+            class="form-control"
+            placeholder="Benutzername"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label
+          for="passwort"
+          class="col-5 col-form-label"
+        >
+          Passwort:
+        </label>
+
+        <div class="col-7">
+          <input
+            type="password"
+            id="passwort"
+            name="passwort"
+            class="form-control"
+            placeholder="Passwort"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="BottomButtonsWrapper row align-items-center">
+        <div class="ForgotWrapper col-5">
+          <a href="#">
+            Passwort vergessen
+          </a>
+        </div>
+
+        <div class="SubmitWrapper col-7">
+          <button
+            type="submit"
+            class="btn btn-primary SubmitButton"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+
+      <p id="loginMessage" class="mt-3"></p>
+
+    </form>
+  </div>
+
+  <div class="FooterWrapper"></div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginMessage = document.getElementById("loginMessage");
+
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const benutzername =
+        document.getElementById("benutzername").value;
+
+      const passwort =
+        document.getElementById("passwort").value;
+
+      if (benutzername === "admin" && passwort === "1234") {
+        window.location.href = "startseite.html";
+      } else {
+        loginMessage.textContent = "Benutzername oder Passwort ist falsch.";
+        loginMessage.style.color = "red";
+      }
+    });
+  </script>
+
+</body>
+</html>
